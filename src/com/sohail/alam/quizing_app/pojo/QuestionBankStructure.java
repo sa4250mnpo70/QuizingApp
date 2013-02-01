@@ -44,16 +44,16 @@ public class QuestionBankStructure implements Serializable {
 	 * @param question
 	 * @param subject
 	 * @param topic
-	 * @param timeLimit
+         * @param timeLimit
+         * @param uuid  
 	 */
 	public QuestionBankStructure(ArrayList<QuestionStructure> question,
-		String subject, String topic, String timeLimit) {
-		
-		this.uuid = String.valueOf(UUID.randomUUID());
+		String subject, String topic, String timeLimit, String uuid) {
 		this.question = question;
 		this.subject = subject;
 		this.topic = topic;
 		this.timeLimit = timeLimit;
+                this.uuid = uuid;
 	}
 
 	/**

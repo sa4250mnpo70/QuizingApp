@@ -36,25 +36,27 @@ public class OptionStructure {
 	/**
 	 *
 	 * @param number
-	 * @param text
+         * @param text
+         * @param uuid  
 	 */
-	public OptionStructure(int number, String text) {
-		this.uuid = String.valueOf(UUID.randomUUID());
+	public OptionStructure(int number, String text, String uuid) {
 		this.number = number;
 		this.text = text;
+                this.uuid = uuid;
 	}
 
 	/**
 	 *
 	 * @param number
 	 * @param text
-	 * @param image
+         * @param image
+         * @param uuid  
 	 */
-	public OptionStructure(int number, String text, String image) {
-		this.uuid = String.valueOf(UUID.randomUUID());
+	public OptionStructure(int number, String text, String image, String uuid) {
 		this.number = number;
 		this.text = text;
 		this.image = image;
+                this.uuid = uuid;
 	}
 
 	/**
