@@ -1,0 +1,133 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.sohail.alam.quizing_app.pojo;
+
+import java.util.UUID;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
+/**
+ *
+ * @author sohail.alam
+ */
+@Root(name = "Option")
+public class OptionStructure {
+
+	@Attribute(name = "number", required = true)
+	private int number;
+	@Attribute(name = "text", required = true)
+	private String text;
+	@Attribute(name = "image", required = false)
+	private String image;
+	@Attribute(name = "correctAns", required = false)
+	private Boolean correctAns;
+	@Attribute(name = "uuid", required = true)
+	private String uuid;
+
+	/**
+	 * 
+	 */
+	public OptionStructure() {
+		super();
+	}
+
+	/**
+	 *
+	 * @param number
+	 * @param text
+	 */
+	public OptionStructure(int number, String text) {
+		this.uuid = String.valueOf(UUID.randomUUID());
+		this.number = number;
+		this.text = text;
+	}
+
+	/**
+	 *
+	 * @param number
+	 * @param text
+	 * @param image
+	 */
+	public OptionStructure(int number, String text, String image) {
+		this.uuid = String.valueOf(UUID.randomUUID());
+		this.number = number;
+		this.text = text;
+		this.image = image;
+	}
+
+	/**
+	 * @return the number
+	 */
+	public int getNumber() {
+		return number;
+	}
+
+	/**
+	 * @param number the number to set
+	 */
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	/**
+	 * @return the uuid
+	 */
+	public String getUuid() {
+		return uuid;
+	}
+
+	/**
+	 * @param uuid the uuid to set
+	 */
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
+	/**
+	 * @return the text
+	 */
+	public String getText() {
+		return text;
+	}
+
+	/**
+	 * @param text the text to set
+	 */
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	/**
+	 * @return the image
+	 */
+	public String getImage() {
+		return image;
+	}
+
+	/**
+	 * @param image the image to set
+	 */
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	/**
+	 * @return the correctAns
+	 */
+	public boolean isCorrectAns() {
+		return correctAns;
+	}
+
+	/**
+	 * @param correctAns the correctAns to set
+	 */
+	public void setCorrectAns(boolean correctAns) {
+		this.correctAns = correctAns;
+	}
+	
+	public void removeCorrectAnsFlag(){
+		this.correctAns = null;
+	}
+}

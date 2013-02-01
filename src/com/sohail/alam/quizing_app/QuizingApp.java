@@ -65,6 +65,11 @@ public class QuizingApp extends javax.swing.JFrame {
                 jScrollPane2 = new javax.swing.JScrollPane();
                 jTextArea_createQuizQuestion = new javax.swing.JTextArea();
                 jCheckBox_createQuizSelectCorrectAnswer = new javax.swing.JCheckBox();
+                jLabel_createQuizDifficultyLevel = new javax.swing.JLabel();
+                jComboBox_createQuizDifficultyLevel = new javax.swing.JComboBox();
+                jButton_createQuizSave = new javax.swing.JButton();
+                jButton_createQuizPrevious = new javax.swing.JButton();
+                jButton_createQuizSave2 = new javax.swing.JButton();
                 jPanel_viewQuiz = new javax.swing.JPanel();
                 jPanel9 = new javax.swing.JPanel();
                 jPanel10 = new javax.swing.JPanel();
@@ -92,6 +97,8 @@ public class QuizingApp extends javax.swing.JFrame {
                 jButton_viewQuizClear = new javax.swing.JButton();
                 jButton_viewQuizSubmit = new javax.swing.JButton();
                 jButton2 = new javax.swing.JButton();
+                jButton1 = new javax.swing.JButton();
+                jButton3 = new javax.swing.JButton();
                 jPanel_viewScores = new javax.swing.JPanel();
                 jPanel14 = new javax.swing.JPanel();
                 jLabel_viewQuizSelectSubject1 = new javax.swing.JLabel();
@@ -363,6 +370,24 @@ public class QuizingApp extends javax.swing.JFrame {
                 jCheckBox_createQuizSelectCorrectAnswer.setForeground(new java.awt.Color(204, 0, 0));
                 jCheckBox_createQuizSelectCorrectAnswer.setText(bundle.getString("QuizingApp.jCheckBox_createQuizSelectCorrectAnswer.text")); // NOI18N
 
+                jLabel_createQuizDifficultyLevel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+                jLabel_createQuizDifficultyLevel.setForeground(new java.awt.Color(51, 153, 0));
+                jLabel_createQuizDifficultyLevel.setText(bundle.getString("QuizingApp.jLabel_createQuizDifficultyLevel.text")); // NOI18N
+
+                jComboBox_createQuizDifficultyLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+                jButton_createQuizSave.setBackground(new java.awt.Color(204, 51, 0));
+                jButton_createQuizSave.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+                jButton_createQuizSave.setText(bundle.getString("QuizingApp.jButton_createQuizSave.text")); // NOI18N
+
+                jButton_createQuizPrevious.setBackground(new java.awt.Color(102, 102, 102));
+                jButton_createQuizPrevious.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+                jButton_createQuizPrevious.setText(bundle.getString("QuizingApp.jButton_createQuizPrevious.text")); // NOI18N
+
+                jButton_createQuizSave2.setBackground(new java.awt.Color(102, 102, 102));
+                jButton_createQuizSave2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+                jButton_createQuizSave2.setText(bundle.getString("QuizingApp.jButton_createQuizSave2.text")); // NOI18N
+
                 javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
                 jPanel7.setLayout(jPanel7Layout);
                 jPanel7Layout.setHorizontalGroup(
@@ -374,13 +399,24 @@ public class QuizingApp extends javax.swing.JFrame {
                                                 .addComponent(jLabel_questionOrOption)
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(jPanel7Layout.createSequentialGroup()
-                                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jButton_selectImage, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                                                        .addComponent(jScrollPane2))
+                                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                                                .addComponent(jButton_createQuizPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jButton_createQuizSave, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(jButton_createQuizSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(jCheckBox_createQuizSelectCorrectAnswer, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))))
+                                                        .addComponent(jCheckBox_createQuizSelectCorrectAnswer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                                                .addComponent(jLabel_createQuizDifficultyLevel)
+                                                                .addGap(18, 18, 18)
+                                                                .addComponent(jComboBox_createQuizDifficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(0, 13, Short.MAX_VALUE))
+                                                        .addComponent(jButton_selectImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addContainerGap())
                 );
                 jPanel7Layout.setVerticalGroup(
@@ -389,14 +425,26 @@ public class QuizingApp extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel_questionOrOption)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton_selectImage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(6, 6, 6)
+                                .addComponent(jCheckBox_createQuizSelectCorrectAnswer)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton_selectImage, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jCheckBox_createQuizSelectCorrectAnswer))
-                                .addContainerGap(12, Short.MAX_VALUE))
+                                        .addComponent(jLabel_createQuizDifficultyLevel)
+                                        .addComponent(jComboBox_createQuizDifficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jButton_createQuizSave, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton_createQuizPrevious, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton_createQuizSave2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
                 );
 
                 jSplitPane_CreateQuiz.setRightComponent(jPanel7);
@@ -409,7 +457,7 @@ public class QuizingApp extends javax.swing.JFrame {
                 );
                 jPanel5Layout.setVerticalGroup(
                         jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jSplitPane_CreateQuiz)
+                        .addComponent(jSplitPane_CreateQuiz, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
                 );
 
                 javax.swing.GroupLayout jPanel_createQuizLayout = new javax.swing.GroupLayout(jPanel_createQuiz);
@@ -546,15 +594,17 @@ public class QuizingApp extends javax.swing.JFrame {
                 jPanel11.setLayout(jPanel11Layout);
                 jPanel11Layout.setHorizontalGroup(
                         jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane3)
+                                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel11Layout.createSequentialGroup()
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(jPanel11Layout.createSequentialGroup()
                                                 .addComponent(jLabel_viewQuizQuestion)
                                                 .addGap(18, 18, Short.MAX_VALUE)
-                                                .addComponent(jLabel_viewQuizQNo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(24, 24, 24))
+                                                .addComponent(jLabel_viewQuizQNo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(24, 24, 24))))
                 );
                 jPanel11Layout.setVerticalGroup(
                         jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,16 +645,21 @@ public class QuizingApp extends javax.swing.JFrame {
                 );
 
                 jButton_viewQuizClear.setBackground(new java.awt.Color(255, 51, 51));
-                jButton_viewQuizClear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
                 jButton_viewQuizClear.setText(bundle.getString("QuizingApp.jButton_viewQuizClear.text")); // NOI18N
 
                 jButton_viewQuizSubmit.setBackground(new java.awt.Color(0, 204, 102));
-                jButton_viewQuizSubmit.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
                 jButton_viewQuizSubmit.setText(bundle.getString("QuizingApp.jButton_viewQuizSubmit.text")); // NOI18N
 
                 jButton2.setBackground(new java.awt.Color(0, 102, 204));
-                jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
                 jButton2.setText(bundle.getString("QuizingApp.jButton2.text")); // NOI18N
+
+                jButton1.setBackground(new java.awt.Color(102, 102, 102));
+                jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+                jButton1.setText(bundle.getString("QuizingApp.jButton1.text")); // NOI18N
+
+                jButton3.setBackground(new java.awt.Color(102, 102, 102));
+                jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+                jButton3.setText(bundle.getString("QuizingApp.jButton3.text")); // NOI18N
 
                 javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
                 jPanel12.setLayout(jPanel12Layout);
@@ -613,29 +668,32 @@ public class QuizingApp extends javax.swing.JFrame {
                         .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addContainerGap()
+                                .addComponent(jButton1)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton_viewQuizClear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                                 .addComponent(jButton_viewQuizSubmit)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)
                                 .addContainerGap())
                 );
-
-                jPanel12Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton2, jButton_viewQuizClear, jButton_viewQuizSubmit});
-
                 jPanel12Layout.setVerticalGroup(
                         jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel12Layout.createSequentialGroup()
                                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jButton2)
                                         .addComponent(jButton_viewQuizClear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton_viewQuizSubmit))
+                                        .addComponent(jButton_viewQuizSubmit)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton1))
                                 .addContainerGap())
                 );
 
-                jPanel12Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton2, jButton_viewQuizClear, jButton_viewQuizSubmit});
+                jPanel12Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2, jButton3, jButton_viewQuizClear, jButton_viewQuizSubmit});
 
                 jSplitPane1.setRightComponent(jPanel12);
 
@@ -651,7 +709,7 @@ public class QuizingApp extends javax.swing.JFrame {
                         .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jSplitPane1)
+                                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                                 .addContainerGap())
                 );
 
@@ -871,9 +929,14 @@ public class QuizingApp extends javax.swing.JFrame {
 		});
 	}
         // Variables declaration - do not modify//GEN-BEGIN:variables
+        private javax.swing.JButton jButton1;
         private javax.swing.JButton jButton2;
+        private javax.swing.JButton jButton3;
         private javax.swing.JButton jButton_addOption;
         private javax.swing.JButton jButton_addQuestion;
+        private javax.swing.JButton jButton_createQuizPrevious;
+        private javax.swing.JButton jButton_createQuizSave;
+        private javax.swing.JButton jButton_createQuizSave2;
         private javax.swing.JButton jButton_selectImage;
         private javax.swing.JButton jButton_submitQuiz;
         private javax.swing.JButton jButton_viewQuizClear;
@@ -881,6 +944,7 @@ public class QuizingApp extends javax.swing.JFrame {
         private javax.swing.JButton jButton_viewScoreClearList;
         private javax.swing.JButton jButton_viewScoreSaveList;
         private javax.swing.JCheckBox jCheckBox_createQuizSelectCorrectAnswer;
+        private javax.swing.JComboBox jComboBox_createQuizDifficultyLevel;
         private javax.swing.JComboBox jComboBox_viewQuizSelectQuiz;
         private javax.swing.JComboBox jComboBox_viewQuizSelectQuiz1;
         private javax.swing.JComboBox jComboBox_viewQuizSelectSubject;
@@ -889,6 +953,7 @@ public class QuizingApp extends javax.swing.JFrame {
         private javax.swing.JComboBox jComboBox_viewQuizSelectTopic1;
         private javax.swing.JLabel jLabel1;
         private javax.swing.JLabel jLabel_chapterOrTopic;
+        private javax.swing.JLabel jLabel_createQuizDifficultyLevel;
         private javax.swing.JLabel jLabel_createQuizSubject;
         private javax.swing.JLabel jLabel_password;
         private javax.swing.JLabel jLabel_questionOrOption;
