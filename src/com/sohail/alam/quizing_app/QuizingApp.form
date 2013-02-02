@@ -435,7 +435,7 @@
                             </DimensionLayout>
                             <DimensionLayout dim="1">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jSplitPane_CreateQuiz" alignment="0" pref="381" max="32767" attributes="0"/>
+                                  <Component id="jSplitPane_CreateQuiz" alignment="0" max="32767" attributes="0"/>
                               </Group>
                             </DimensionLayout>
                           </Layout>
@@ -467,9 +467,9 @@
                                                   <Component id="jButton_createQuizAddQuestion" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="jButton_createQuizAddOption" alignment="0" max="32767" attributes="0"/>
                                                   <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="jLabel_totalQuestions" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel_createQuizTotalQO" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace pref="21" max="32767" attributes="0"/>
-                                                      <Component id="jTextField_totalQuestions" min="-2" pref="45" max="-2" attributes="0"/>
+                                                      <Component id="jTextField_totalQO" min="-2" pref="45" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="jTextField_createQuizSetTimeLimit" alignment="0" max="32767" attributes="0"/>
                                                   <Group type="102" attributes="0">
@@ -515,8 +515,8 @@
                                               <Component id="jButton_createQuizAddOption" min="-2" pref="30" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jLabel_totalQuestions" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField_totalQuestions" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_createQuizTotalQO" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTextField_totalQO" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace pref="41" max="32767" attributes="0"/>
                                               <Component id="jButton_createQuizSubmitQuiz" min="-2" pref="40" max="-2" attributes="0"/>
@@ -598,25 +598,28 @@
                                         </Property>
                                         <Property name="enabled" type="boolean" value="false"/>
                                       </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_createQuizAddOptionActionPerformed"/>
+                                      </Events>
                                     </Component>
-                                    <Component class="javax.swing.JLabel" name="jLabel_totalQuestions">
+                                    <Component class="javax.swing.JLabel" name="jLabel_createQuizTotalQO">
                                       <Properties>
                                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jLabel_totalQuestions.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jLabel_createQuizTotalQO.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                         </Property>
                                       </Properties>
                                     </Component>
-                                    <Component class="javax.swing.JTextField" name="jTextField_totalQuestions">
+                                    <Component class="javax.swing.JTextField" name="jTextField_totalQO">
                                       <Properties>
                                         <Property name="editable" type="boolean" value="false"/>
                                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jTextField_totalQuestions.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jTextField_totalQO.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
                                         </Property>
                                         <Property name="autoscrolls" type="boolean" value="false"/>
                                         <Property name="enabled" type="boolean" value="false"/>
                                       </Properties>
                                       <Events>
-                                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_totalQuestionsCaretUpdate"/>
+                                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_totalQOCaretUpdate"/>
                                       </Events>
                                     </Component>
                                     <Component class="javax.swing.JLabel" name="jLabel_setTimeLimit">
@@ -721,11 +724,19 @@
                                                       <Group type="103" groupAlignment="1" attributes="0">
                                                           <Component id="jScrollPane_quizText" min="-2" pref="238" max="-2" attributes="0"/>
                                                           <Group type="102" attributes="0">
-                                                              <Component id="jButton_createQuizPrevious" min="-2" pref="77" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                                  <Group type="102" attributes="0">
+                                                                      <Component id="jButton_createQuizPrevious" min="-2" pref="77" max="-2" attributes="0"/>
+                                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                                      <Component id="jButton_createQuizSave" min="-2" pref="69" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <Component id="jLabel_createQuizSelectQNo" max="32767" attributes="0"/>
+                                                              </Group>
                                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="jButton_createQuizSave" min="-2" pref="69" max="-2" attributes="0"/>
-                                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                              <Component id="jButton_createQuizNext" min="-2" pref="72" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Component id="jButton_createQuizNext" pref="72" max="32767" attributes="0"/>
+                                                                  <Component id="jComboBox_createQuizSelectQNo" max="32767" attributes="0"/>
+                                                              </Group>
                                                           </Group>
                                                       </Group>
                                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -748,16 +759,18 @@
                                     <DimensionLayout dim="1">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace pref="14" max="32767" attributes="0"/>
                                               <Component id="jLabel_questionOrOption" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="jPanel_quizImage" max="32767" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="jButton_selectImage" min="-2" pref="30" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="jScrollPane_quizText" min="-2" pref="284" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jPanel_quizImage" max="32767" attributes="0"/>
+                                                  <Component id="jScrollPane_quizText" pref="236" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jButton_selectImage" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_createQuizSelectQNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jComboBox_createQuizSelectQNo" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
@@ -778,7 +791,7 @@
                                                       </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace pref="14" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -804,6 +817,9 @@
                                         </Property>
                                         <Property name="enabled" type="boolean" value="false"/>
                                       </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_selectImageActionPerformed"/>
+                                      </Events>
                                     </Component>
                                     <Container class="javax.swing.JPanel" name="jPanel_quizImage">
                                       <Properties>
@@ -817,21 +833,15 @@
                                       <Layout>
                                         <DimensionLayout dim="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jScrollPane_quizImage" alignment="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                           </Group>
                                         </DimensionLayout>
                                         <DimensionLayout dim="1">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jScrollPane_quizImage" alignment="0" max="32767" attributes="0"/>
+                                              <EmptySpace min="0" pref="234" max="32767" attributes="0"/>
                                           </Group>
                                         </DimensionLayout>
                                       </Layout>
-                                      <SubComponents>
-                                        <Container class="javax.swing.JScrollPane" name="jScrollPane_quizImage">
-
-                                          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                                        </Container>
-                                      </SubComponents>
                                     </Container>
                                     <Container class="javax.swing.JScrollPane" name="jScrollPane_quizText">
 
@@ -941,6 +951,31 @@
                                       </Properties>
                                       <Events>
                                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_createQuizNextActionPerformed"/>
+                                      </Events>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="jLabel_createQuizSelectQNo">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jLabel_createQuizSelectQNo.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                        </Property>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JComboBox" name="jComboBox_createQuizSelectQNo">
+                                      <Properties>
+                                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                          <StringArray count="6">
+                                            <StringItem index="0" value="1"/>
+                                            <StringItem index="1" value="2"/>
+                                            <StringItem index="2" value="3"/>
+                                            <StringItem index="3" value="4"/>
+                                            <StringItem index="4" value="5"/>
+                                            <StringItem index="5" value="6"/>
+                                          </StringArray>
+                                        </Property>
+                                        <Property name="enabled" type="boolean" value="false"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox_createQuizSelectQNoActionPerformed"/>
                                       </Events>
                                     </Component>
                                   </SubComponents>
