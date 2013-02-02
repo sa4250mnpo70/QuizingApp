@@ -458,7 +458,7 @@
                                   <Layout>
                                     <DimensionLayout dim="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jButton_createQuizSubmitQuiz" max="32767" attributes="0"/>
@@ -480,6 +480,15 @@
                                                       </Group>
                                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                   </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel_createQuizQNo" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="jComboBox_createQuizQNo" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="jLabel_createQuizONo" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="jComboBox_createQuizONo" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
@@ -490,28 +499,35 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel_createQuizSubject" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jTextField_createQuizSubject" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel_chapterOrTopic" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jTextField_createQuizChapterOrTopic" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jLabel_setTimeLimit" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jTextField_createQuizSetTimeLimit" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jButton_createQuizAddQuestion" min="-2" pref="30" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="jButton_createQuizAddOption" min="-2" pref="30" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="3" attributes="0">
                                                   <Component id="jLabel_totalQuestions" alignment="3" min="-2" max="-2" attributes="0"/>
                                                   <Component id="jTextField_totalQuestions" alignment="3" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace pref="41" max="32767" attributes="0"/>
                                               <Component id="jButton_createQuizSubmitQuiz" min="-2" pref="40" max="-2" attributes="0"/>
-                                              <EmptySpace pref="47" max="32767" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel_createQuizQNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jComboBox_createQuizQNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel_createQuizONo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jComboBox_createQuizONo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                     </DimensionLayout>
@@ -599,6 +615,9 @@
                                         <Property name="autoscrolls" type="boolean" value="false"/>
                                         <Property name="enabled" type="boolean" value="false"/>
                                       </Properties>
+                                      <Events>
+                                        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="jTextField_totalQuestionsCaretUpdate"/>
+                                      </Events>
                                     </Component>
                                     <Component class="javax.swing.JLabel" name="jLabel_setTimeLimit">
                                       <Properties>
@@ -628,6 +647,53 @@
                                         </Property>
                                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                                           <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jButton_createQuizSubmitQuiz.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                        </Property>
+                                        <Property name="enabled" type="boolean" value="false"/>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="jLabel_createQuizQNo">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jLabel_createQuizQNo.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                        </Property>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JLabel" name="jLabel_createQuizONo">
+                                      <Properties>
+                                        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                                          <ResourceString bundle="com/sohail/alam/quizing_app/Bundle.properties" key="QuizingApp.jLabel_createQuizONo.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                                        </Property>
+                                      </Properties>
+                                    </Component>
+                                    <Component class="javax.swing.JComboBox" name="jComboBox_createQuizQNo">
+                                      <Properties>
+                                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                          <StringArray count="6">
+                                            <StringItem index="0" value="1"/>
+                                            <StringItem index="1" value="2"/>
+                                            <StringItem index="2" value="3"/>
+                                            <StringItem index="3" value="4"/>
+                                            <StringItem index="4" value="5"/>
+                                            <StringItem index="5" value="6"/>
+                                          </StringArray>
+                                        </Property>
+                                        <Property name="enabled" type="boolean" value="false"/>
+                                      </Properties>
+                                      <Events>
+                                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox_createQuizQNoActionPerformed"/>
+                                      </Events>
+                                    </Component>
+                                    <Component class="javax.swing.JComboBox" name="jComboBox_createQuizONo">
+                                      <Properties>
+                                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                                          <StringArray count="6">
+                                            <StringItem index="0" value="1"/>
+                                            <StringItem index="1" value="2"/>
+                                            <StringItem index="2" value="3"/>
+                                            <StringItem index="3" value="4"/>
+                                            <StringItem index="4" value="5"/>
+                                            <StringItem index="5" value="6"/>
+                                          </StringArray>
                                         </Property>
                                         <Property name="enabled" type="boolean" value="false"/>
                                       </Properties>

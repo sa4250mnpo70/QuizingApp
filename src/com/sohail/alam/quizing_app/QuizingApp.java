@@ -70,6 +70,10 @@ public class QuizingApp extends javax.swing.JFrame {
         jLabel_setTimeLimit = new javax.swing.JLabel();
         jTextField_createQuizSetTimeLimit = new javax.swing.JTextField();
         jButton_createQuizSubmitQuiz = new javax.swing.JButton();
+        jLabel_createQuizQNo = new javax.swing.JLabel();
+        jLabel_createQuizONo = new javax.swing.JLabel();
+        jComboBox_createQuizQNo = new javax.swing.JComboBox();
+        jComboBox_createQuizONo = new javax.swing.JComboBox();
         jPanel_quizContent = new javax.swing.JPanel();
         jLabel_questionOrOption = new javax.swing.JLabel();
         jButton_selectImage = new javax.swing.JButton();
@@ -341,6 +345,11 @@ public class QuizingApp extends javax.swing.JFrame {
         jTextField_totalQuestions.setText(bundle.getString("QuizingApp.jTextField_totalQuestions.text")); // NOI18N
         jTextField_totalQuestions.setAutoscrolls(false);
         jTextField_totalQuestions.setEnabled(false);
+        jTextField_totalQuestions.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField_totalQuestionsCaretUpdate(evt);
+            }
+        });
 
         jLabel_setTimeLimit.setText(bundle.getString("QuizingApp.jLabel_setTimeLimit.text")); // NOI18N
 
@@ -356,6 +365,21 @@ public class QuizingApp extends javax.swing.JFrame {
         jButton_createQuizSubmitQuiz.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton_createQuizSubmitQuiz.setText(bundle.getString("QuizingApp.jButton_createQuizSubmitQuiz.text")); // NOI18N
         jButton_createQuizSubmitQuiz.setEnabled(false);
+
+        jLabel_createQuizQNo.setText(bundle.getString("QuizingApp.jLabel_createQuizQNo.text")); // NOI18N
+
+        jLabel_createQuizONo.setText(bundle.getString("QuizingApp.jLabel_createQuizONo.text")); // NOI18N
+
+        jComboBox_createQuizQNo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
+        jComboBox_createQuizQNo.setEnabled(false);
+        jComboBox_createQuizQNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_createQuizQNoActionPerformed(evt);
+            }
+        });
+
+        jComboBox_createQuizONo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
+        jComboBox_createQuizONo.setEnabled(false);
 
         javax.swing.GroupLayout jPanel_quizDetailsLayout = new javax.swing.GroupLayout(jPanel_quizDetails);
         jPanel_quizDetails.setLayout(jPanel_quizDetailsLayout);
@@ -379,7 +403,15 @@ public class QuizingApp extends javax.swing.JFrame {
                             .addComponent(jLabel_createQuizSubject)
                             .addComponent(jLabel_chapterOrTopic)
                             .addComponent(jLabel_setTimeLimit))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel_quizDetailsLayout.createSequentialGroup()
+                        .addComponent(jLabel_createQuizQNo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox_createQuizQNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel_createQuizONo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox_createQuizONo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel_quizDetailsLayout.setVerticalGroup(
@@ -387,27 +419,33 @@ public class QuizingApp extends javax.swing.JFrame {
             .addGroup(jPanel_quizDetailsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel_createQuizSubject)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField_createQuizSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_chapterOrTopic)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField_createQuizChapterOrTopic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel_setTimeLimit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField_createQuizSetTimeLimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_createQuizAddQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton_createQuizAddOption, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_quizDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_totalQuestions)
                     .addComponent(jTextField_totalQuestions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButton_createQuizSubmitQuiz, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel_quizDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_createQuizQNo)
+                    .addComponent(jComboBox_createQuizQNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel_createQuizONo)
+                    .addComponent(jComboBox_createQuizONo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
 
         jSplitPane_CreateQuiz.setLeftComponent(jPanel_quizDetails);
@@ -1080,6 +1118,7 @@ public class QuizingApp extends javax.swing.JFrame {
         int count = 0;
         if (!jTextArea_createQuizQuestion.getText().trim().isEmpty()) {
             jButton_createQuizSave.setEnabled(true);
+            jButton_selectImage.setEnabled(true);
             count = Integer.parseInt(jTextField_totalQuestions.getText());
             if (currentQuestionNumber > 0) {
                 jButton_createQuizPrevious.setEnabled(true);
@@ -1164,10 +1203,27 @@ public class QuizingApp extends javax.swing.JFrame {
         System.out.println("");
     }//GEN-LAST:event_jButton_createQuizNextActionPerformed
 
+    private void jTextField_totalQuestionsCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField_totalQuestionsCaretUpdate
+        jComboBox_createQuizQNo.setEnabled(true);
+        jComboBox_createQuizONo.setEnabled(true);
+    }//GEN-LAST:event_jTextField_totalQuestionsCaretUpdate
+
+    private void jComboBox_createQuizQNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_createQuizQNoActionPerformed
+        try {
+            int questionNo = Integer.parseInt(jComboBox_createQuizQNo.getSelectedItem().toString());
+            jTextArea_createQuizQuestion.setText(questions[questionNo - 1].getText());
+            jComboBox_createQuizDifficultyLevel.setSelectedIndex(questions[questionNo - 1].getDifficulty());
+        } catch (Exception e) {
+            jTextArea_createQuizQuestion.setText("No Quiz Found!!");
+        }
+
+    }//GEN-LAST:event_jComboBox_createQuizQNoActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -1193,8 +1249,12 @@ public class QuizingApp extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            QuizingApp quizingApp = new QuizingApp();
+
             public void run() {
-                new QuizingApp().setVisible(true);
+                //Set the Quiz Management Tab invisible
+                quizingApp.jTabbedPane_manageQuiz.setVisible(false);
+                quizingApp.setVisible(true);
             }
         });
     }
@@ -1215,6 +1275,8 @@ public class QuizingApp extends javax.swing.JFrame {
     private javax.swing.JButton jButton_viewScoreSaveList;
     private javax.swing.JCheckBox jCheckBox_createQuizSelectCorrectAnswer;
     private javax.swing.JComboBox jComboBox_createQuizDifficultyLevel;
+    private javax.swing.JComboBox jComboBox_createQuizONo;
+    private javax.swing.JComboBox jComboBox_createQuizQNo;
     private javax.swing.JComboBox jComboBox_viewQuizSelectQuiz;
     private javax.swing.JComboBox jComboBox_viewQuizSelectQuiz1;
     private javax.swing.JComboBox jComboBox_viewQuizSelectSubject;
@@ -1223,6 +1285,8 @@ public class QuizingApp extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox_viewQuizSelectTopic1;
     private javax.swing.JLabel jLabel_chapterOrTopic;
     private javax.swing.JLabel jLabel_createQuizDifficultyLevel;
+    private javax.swing.JLabel jLabel_createQuizONo;
+    private javax.swing.JLabel jLabel_createQuizQNo;
     private javax.swing.JLabel jLabel_createQuizSubject;
     private javax.swing.JLabel jLabel_header;
     private javax.swing.JLabel jLabel_password;
