@@ -6,7 +6,6 @@ package com.sohail.alam.quizing_app.pojo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.UUID;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;

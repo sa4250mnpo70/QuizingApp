@@ -4,7 +4,6 @@
  */
 package com.sohail.alam.quizing_app.pojo;
 
-import java.util.UUID;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Root;
 
@@ -20,7 +19,7 @@ public class OptionStructure {
 	@Attribute(name = "text", required = true)
 	private String text;
 	@Attribute(name = "image", required = false)
-	private String image;
+	private byte[] image;
 	@Attribute(name = "correctAns", required = false)
 	private Boolean correctAns;
 	@Attribute(name = "uuid", required = true)
@@ -52,7 +51,7 @@ public class OptionStructure {
          * @param image
          * @param uuid  
 	 */
-	public OptionStructure(int number, String text, String image, String uuid) {
+	public OptionStructure(int number, String text, byte[] image, String uuid) {
 		this.number = number;
 		this.text = text;
 		this.image = image;
@@ -104,14 +103,14 @@ public class OptionStructure {
 	/**
 	 * @return the image
 	 */
-	public String getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
 	/**
 	 * @param image the image to set
 	 */
-	public void setImage(String image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 

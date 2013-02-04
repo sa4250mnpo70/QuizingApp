@@ -15,7 +15,7 @@ public class Questions {
     private int questionNo = 0;
     private int difficulty = 0;
     private String text = null;
-    private String image = null;
+    private byte[] image = null;
     private String uuid = null;
 
     /**
@@ -44,7 +44,7 @@ public class Questions {
      * @param text
      * @param image 
      */
-    public Questions(int questionNo, int difficulty, String text, String image){
+    public Questions(int questionNo, int difficulty, String text, byte[] image){
         this.questionNo = questionNo;
         this.difficulty = difficulty;
         this.text = text;
@@ -97,14 +97,14 @@ public class Questions {
     /**
      * @return the image
      */
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
     /**
      * @param image the image to set
      */
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

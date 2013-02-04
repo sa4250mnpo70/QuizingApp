@@ -26,7 +26,7 @@ public class QuestionStructure {
     @Attribute(name = "text", required = true)
     private String text;
     @Attribute(name = "image", required = false)
-    private String image;
+    private byte[] image;
     @Attribute(name = "uuid", required = true)
     private String uuid;
 
@@ -80,7 +80,7 @@ public class QuestionStructure {
      * @param image
      */
     public QuestionStructure(ArrayList<OptionStructure> optionList,
-            int number, int difficulty, String text, String image, String uuid) {
+            int number, int difficulty, String text, byte[] image, String uuid) {
 
         this.optionList = optionList;
         this.number = number;
@@ -136,7 +136,7 @@ public class QuestionStructure {
      * @param text
      * @param image
      */
-    public void addToOptionList(int number, String text, String image, String uuid) {
+    public void addToOptionList(int number, String text, byte[] image, String uuid) {
         this.optionList.add(new OptionStructure(number, text, image, uuid));
     }
 
@@ -206,14 +206,14 @@ public class QuestionStructure {
     /**
      * @return the image
      */
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
     /**
      * @param image the image to set
      */
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 }

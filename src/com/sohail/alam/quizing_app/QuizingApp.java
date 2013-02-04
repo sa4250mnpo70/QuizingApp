@@ -4,12 +4,15 @@
  */
 package com.sohail.alam.quizing_app;
 
+import com.sohail.alam.fileManager.ConvertDataTypes;
+import com.sohail.alam.fileManager.ReadWriteFile;
+import com.sohail.alam.imageManager.ImageIconManager;
+import com.sohail.alam.imageManager.ImageManager;
 import com.sohail.alam.library_file_manager.LibraryFileManagerClass;
 import java.awt.Color;
-import java.io.ByteArrayOutputStream;
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,7 +21,6 @@ import java.io.FileOutputStream;
 public class QuizingApp extends javax.swing.JFrame {
 
 	private boolean isLoggedIn = false;
-	private Boolean isQorO = null; // true for question and false for options and null for none
 	private int currentQuestionNumber = 0;
 	private int previousQuestionNumber = 0;
 	private int nextQuestionNumber = 0;
@@ -27,13 +29,21 @@ public class QuizingApp extends javax.swing.JFrame {
 	private int nextOptionNumber = 0;
 	private int totalQuestionsAdded = 0;
 	private int totalOptionsAdded = 0;
+	private Boolean isQorO = null; // true for question and false for options and null for none
 	private String quizSubject = null;
 	private String quizTopic = null;
 	private String quizTimeLimit = null;
 	private Quiz quiz = Quiz.getInstance();
 	private Questions[] questions = new Questions[100]; // questions[question_number]
 	private Options[][] options = new Options[100][6]; // options[question_number][option_number]
+	private String[] questionImagePath = new String[100];
+	private String[][] optionImagePath = new String[100][6];
 	private QuizingAppMethods methods = QuizingAppMethods.getInstance();
+	private ImageIconManager imageIconManager = new ImageIconManager();
+	private ImageManager imageManager = new ImageManager();
+	private LibraryFileManagerClass fileManager = new LibraryFileManagerClass();
+	private ConvertDataTypes convertDataType = new ConvertDataTypes();
+	private ReadWriteFile readWriteFile = new ReadWriteFile();
 
 	/**
 	 * Creates new form QuizingApp
@@ -88,7 +98,8 @@ public class QuizingApp extends javax.swing.JFrame {
                 jPanel_quizContent = new javax.swing.JPanel();
                 jLabel_questionOrOption = new javax.swing.JLabel();
                 jButton_selectImage = new javax.swing.JButton();
-                jPanel_quizImage = new javax.swing.JPanel();
+                jPanel_createQuizQuizImage = new javax.swing.JPanel();
+                jLabel_createQuizDrawImage = new javax.swing.JLabel();
                 jScrollPane_quizText = new javax.swing.JScrollPane();
                 jTextArea_createQuizQuestion = new javax.swing.JTextArea();
                 jCheckBox_createQuizSelectCorrectAnswer = new javax.swing.JCheckBox();
@@ -479,17 +490,23 @@ public class QuizingApp extends javax.swing.JFrame {
                         }
                 });
 
-                jPanel_quizImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+                jPanel_createQuizQuizImage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-                javax.swing.GroupLayout jPanel_quizImageLayout = new javax.swing.GroupLayout(jPanel_quizImage);
-                jPanel_quizImage.setLayout(jPanel_quizImageLayout);
-                jPanel_quizImageLayout.setHorizontalGroup(
-                        jPanel_quizImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
+                jLabel_createQuizDrawImage.setText(bundle.getString("QuizingApp.jLabel_createQuizDrawImage.text")); // NOI18N
+
+                javax.swing.GroupLayout jPanel_createQuizQuizImageLayout = new javax.swing.GroupLayout(jPanel_createQuizQuizImage);
+                jPanel_createQuizQuizImage.setLayout(jPanel_createQuizQuizImageLayout);
+                jPanel_createQuizQuizImageLayout.setHorizontalGroup(
+                        jPanel_createQuizQuizImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_createQuizQuizImageLayout.createSequentialGroup()
+                                .addComponent(jLabel_createQuizDrawImage)
+                                .addGap(0, 0, Short.MAX_VALUE))
                 );
-                jPanel_quizImageLayout.setVerticalGroup(
-                        jPanel_quizImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 234, Short.MAX_VALUE)
+                jPanel_createQuizQuizImageLayout.setVerticalGroup(
+                        jPanel_createQuizQuizImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel_createQuizQuizImageLayout.createSequentialGroup()
+                                .addComponent(jLabel_createQuizDrawImage)
+                                .addGap(0, 0, Short.MAX_VALUE))
                 );
 
                 jTextArea_createQuizQuestion.setColumns(20);
@@ -581,13 +598,14 @@ public class QuizingApp extends javax.swing.JFrame {
                                                                         .addComponent(jComboBox_createQuizSelectQNo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(jPanel_quizContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(jPanel_quizImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(jCheckBox_createQuizSelectCorrectAnswer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_quizContentLayout.createSequentialGroup()
+                                                                .addGap(0, 0, Short.MAX_VALUE)
                                                                 .addComponent(jLabel_createQuizDifficultyLevel)
                                                                 .addGap(18, 18, 18)
                                                                 .addComponent(jComboBox_createQuizDifficultyLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(jButton_selectImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                        .addComponent(jButton_selectImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jPanel_createQuizQuizImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addContainerGap())
                 );
                 jPanel_quizContentLayout.setVerticalGroup(
@@ -597,7 +615,7 @@ public class QuizingApp extends javax.swing.JFrame {
                                 .addComponent(jLabel_questionOrOption)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel_quizContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jPanel_quizImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jPanel_createQuizQuizImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jScrollPane_quizText, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel_quizContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1183,13 +1201,18 @@ public class QuizingApp extends javax.swing.JFrame {
 			    String question = jTextArea_createQuizQuestion.getText().trim();
 			    int thisQuestion = Integer.parseInt(jTextField_totalQO.getText());
 			    int difficulty = Integer.parseInt(jComboBox_createQuizDifficultyLevel.getSelectedItem().toString());
-			    String image = null;
+			    byte[] image = null;
+
 			    if (currentQuestionNumber == 0) {
 				    currentQuestionNumber = thisQuestion + 1;
 			    } else {
 				    currentQuestionNumber++;
 			    }
 			    if (!question.isEmpty()) {
+				    try {
+					    image = readWriteFile.readFile(questionImagePath[currentQuestionNumber].toString());
+				    } catch (Exception ex) {
+				    }
 				    if (image == null) {
 					    questions[currentQuestionNumber - 1] = new Questions(currentQuestionNumber, difficulty, question);
 				    } else {
@@ -1210,18 +1233,27 @@ public class QuizingApp extends javax.swing.JFrame {
 			    System.out.println("Question Image: " + questions[currentQuestionNumber - 1].getImage());
 			    System.out.println("Question UUID: " + questions[currentQuestionNumber - 1].getUuid());
 			    System.out.println("");
+			    //TEST
+//			    try {
+//				    readWriteFile.writeFile(questions[currentQuestionNumber - 1].getImage(), "D:/test101.jpg");
+//			    } catch (Exception e) {
+//			    }
 		    } // If Option is selected
 		    else if (!isQorO) {
 			    int thisQuestion = Integer.parseInt(jComboBox_createQuizSelectQNo.getSelectedItem().toString());
 			    String option = jTextArea_createQuizQuestion.getText().trim();
 			    int thisOption = Integer.parseInt(jTextField_totalQO.getText());
-			    String image = null;
+			    byte[] image = null;
 			    if (currentOptionNumber == 0) {
 				    currentOptionNumber = thisOption + 1;
 			    } else {
 				    currentOptionNumber++;
 			    }
 			    if (!option.isEmpty()) {
+				    try {
+					    image = readWriteFile.readFile(optionImagePath[thisQuestion - 1][currentOptionNumber - 1].toString());
+				    } catch (Exception ex) {
+				    }
 				    if (image == null) {
 					    options[thisQuestion - 1][currentOptionNumber - 1] = new Options(currentOptionNumber, option, image);
 					    if (jCheckBox_createQuizSelectCorrectAnswer.isSelected()) {
@@ -1250,6 +1282,10 @@ public class QuizingApp extends javax.swing.JFrame {
 			    System.out.println("Option Image: " + options[thisQuestion - 1][currentOptionNumber - 1].getImage());
 			    System.out.println("Option UUID: " + options[thisQuestion - 1][currentOptionNumber - 1].getUuid());
 			    System.out.println("");
+			    try {
+				    readWriteFile.writeFile(options[thisQuestion - 1][currentOptionNumber - 1].getImage(), "D:/OptionTest101.jpg");
+			    } catch (Exception e) {
+			    }
 		    }
 	    }
     }//GEN-LAST:event_jButton_createQuizSaveActionPerformed
@@ -1430,43 +1466,32 @@ public class QuizingApp extends javax.swing.JFrame {
         }//GEN-LAST:event_jButton_createQuizAddOptionActionPerformed
 
         private void jButton_selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_selectImageActionPerformed
-		LibraryFileManagerClass fileManager = new LibraryFileManagerClass();
-		File imageFile = null;
-		FileInputStream imageIS = null;
-		byte imageByte[] = null;
+		File image = null;
 		try {
-			imageFile = fileManager.showFileChooser(this, 0, "Select Image",
+			image = fileManager.showFileChooser(this, 0, "Select Image",
 				"Click to Select the Image",
 				"Quizing App :: Select Image", "");
-			imageIS = new FileInputStream(imageFile);
-			imageByte = new byte[imageIS.available()];
-			imageIS.read(imageByte);
-			//TEST
-//			System.out.println("");
-//			for (int i = 0; i < imageByte.length; i++) {
-//				System.out.print(imageByte[i]);
-//			}
-//			System.out.println("IMAGE NAME: " + imageFile.getName());
-//			System.out.println("IMAGE: " + imageFile.toString());
-//			System.out.println("");
-			//****** create file
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			FileOutputStream fos = new FileOutputStream("D:/" + System.currentTimeMillis() + ".jpeg");
-			try {
-				bos.write(imageByte);
-				fos.write(bos.toByteArray());
-			} catch (Exception e) {
-			} finally {
-				bos.close();
-				fos.close();
+			//if question is selected
+			if (isQorO) {
+				questionImagePath[currentQuestionNumber] = image.getAbsolutePath();
+			} else if (!isQorO) {
+				optionImagePath[currentQuestionNumber][currentOptionNumber] = image.getAbsolutePath();
 			}
-
+//			ImageIcon icon = imageManager.rescaleImageFromFile(image,
+//				jPanel_createQuizQuizImage.getHeight(),
+//				jPanel_createQuizQuizImage.getWidth());
+//			jLabel_createQuizDrawImage.setText("");
+//			jLabel_createQuizDrawImage.setIcon(icon);
+			BufferedImage buffImage = null;
+			buffImage = imageManager.rescaleImageFromFile(image,
+				jPanel_createQuizQuizImage.getHeight(),
+				jPanel_createQuizQuizImage.getWidth());
+			ImageIcon icon = new ImageIcon(buffImage);
+			jLabel_createQuizDrawImage.setText("");
+			jLabel_createQuizDrawImage.setIcon(icon);
 		} catch (Exception ex) {
-		} finally {
-			try {
-				imageIS.close();
-			} catch (Exception e) {
-			}
+			jLabel_createQuizDrawImage.setIcon(null);
+			jLabel_createQuizDrawImage.setText("Wrong Image, Please Try Again");
 		}
         }//GEN-LAST:event_jButton_selectImageActionPerformed
 
@@ -1537,6 +1562,7 @@ public class QuizingApp extends javax.swing.JFrame {
         private javax.swing.JComboBox jComboBox_viewQuizSelectTopic1;
         private javax.swing.JLabel jLabel_chapterOrTopic;
         private javax.swing.JLabel jLabel_createQuizDifficultyLevel;
+        private javax.swing.JLabel jLabel_createQuizDrawImage;
         private javax.swing.JLabel jLabel_createQuizONo;
         private javax.swing.JLabel jLabel_createQuizQNo;
         private javax.swing.JLabel jLabel_createQuizSelectQNo;
@@ -1563,11 +1589,11 @@ public class QuizingApp extends javax.swing.JFrame {
         private javax.swing.JPanel jPanel_content;
         private javax.swing.JPanel jPanel_createQuiz;
         private javax.swing.JPanel jPanel_createQuizContent;
+        private javax.swing.JPanel jPanel_createQuizQuizImage;
         private javax.swing.JPanel jPanel_header;
         private javax.swing.JPanel jPanel_manageQuiz;
         private javax.swing.JPanel jPanel_quizContent;
         private javax.swing.JPanel jPanel_quizDetails;
-        private javax.swing.JPanel jPanel_quizImage;
         private javax.swing.JPanel jPanel_quizTimer;
         private javax.swing.JPanel jPanel_selectQuiz;
         private javax.swing.JPanel jPanel_selectQuizSet;

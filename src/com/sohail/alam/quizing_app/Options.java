@@ -14,7 +14,7 @@ public class Options {
 
     private int number;
     private String text;
-    private String image;
+    private byte[] image;
     private Boolean correctAns;
     private String uuid;
 
@@ -41,7 +41,7 @@ public class Options {
      * @param text
      * @param image 
      */
-    public Options(int number, String text, String image){
+    public Options(int number, String text, byte[] image){
         this.number = number;
         this.text = text;
         this.image = image;
@@ -79,14 +79,14 @@ public class Options {
     /**
      * @return the image
      */
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
     /**
      * @param image the image to set
      */
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
